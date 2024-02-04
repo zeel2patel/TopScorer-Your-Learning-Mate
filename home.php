@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 include('Extra/header.php');
+=======
+include('header.php');
+>>>>>>> 12b90cb26a559199c52844bbf87ce904bc28c5a5
 ?>
 <!DOCTYPE html>
 <html lang="en">
