@@ -10,7 +10,7 @@ include('header.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TopScorer - Transforming Education</title>
+    <title>TopScorer - Transforming Education Vinay Rana</title>
 </head>
 <body>
 
