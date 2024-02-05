@@ -49,7 +49,6 @@ h1 {
 }
 
 p {
-    color: #666;
     line-height: 1.6;
 }
 
@@ -94,4 +93,91 @@ p {
 .paragraph p {
     font-size: 16px;
     line-height: 1.6;
+}
+
+.addfield .field {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 26.5vh;
+}
+
+.addfield .field input {
+    padding: 15px;
+    border: none;
+    background-color: aliceblue;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.addfield .field textarea {
+    padding: 15px;
+    border: none;
+    background-color: aliceblue;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.addfield .field label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.addfield .field button {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    width: 20%;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0 auto;
+}
+
+.addcourse .course {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.addcourse .course input, select, option {
+    padding: 15px;
+    border: none;
+    background-color: aliceblue;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.addcourse .course textarea {
+    padding: 15px;
+    border: none;
+    background-color: aliceblue;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.addcourse .course label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.addcourse .course button {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    width: 20%;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0 auto;
 }

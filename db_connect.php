@@ -43,6 +43,8 @@ class DatabaseCreate
                 CREATE TABLE IF NOT EXISTS Semesters (
                     semester_id INT NOT NULL AUTO_INCREMENT,
                     semester_name VARCHAR(255) NOT NULL,
+                    start_date DATE NULL DEFAULT NULL,
+                    end_date DATE NULL DEFAULT NULL,
                     PRIMARY KEY (semester_id)
                   );"
             );
@@ -63,13 +65,8 @@ class DatabaseCreate
                     course_id INT NOT NULL AUTO_INCREMENT,
                     course_name VARCHAR(255) NOT NULL,
                     course_description TEXT NULL DEFAULT NULL,
-                    start_date DATE NULL DEFAULT NULL,
-                    end_date DATE NULL DEFAULT NULL,
-                    semester_id INT NULL DEFAULT NULL,
                     field_id INT NULL DEFAULT NULL,
                     PRIMARY KEY (course_id),
-                      FOREIGN KEY (semester_id)
-                      REFERENCES Semesters (semester_id),
                       FOREIGN KEY (field_id)
                       REFERENCES Field (field_id)
                   );"
