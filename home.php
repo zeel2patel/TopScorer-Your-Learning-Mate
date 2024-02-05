@@ -1,16 +1,12 @@
 <?php
-<<<<<<< HEAD
 include('Extra/header.php');
-=======
-include('header.php');
->>>>>>> 12b90cb26a559199c52844bbf87ce904bc28c5a5
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TopScorer - Transforming Education Vinay Rana</title>
+    <title>TopScorer - Transforming Education</title>
 </head>
 <body>
 

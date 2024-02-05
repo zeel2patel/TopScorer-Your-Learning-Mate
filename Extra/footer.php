@@ -10,7 +10,6 @@
         <ul>
           <li><a href="#">About TopScorer</a></li>
           <li><a href="#">Admissions Policy</a></li>
-          <li><a href="./addmission.php">Apply for Admission</a></li>
           <li><a href="#">Download Prospectus</a></li>
           <li><a href="#">Contact Us</a></li>
         </ul>
@@ -25,4 +24,3 @@
   </div>
   <p>&copy; 2024 TopScorer - Your Learning Mate. All Rights Reserved.</p>
 </footer>
-
