@@ -14,7 +14,7 @@ include('Extra/header.php');
    <div class="w-100 in-ad-ap">
   <div class="row m-auto text-center">
   <div class="col-md-4">
-    <a href="student_portal.php" class="btn btn-primary btn-lg btn-block">
+    <a href="user/login.php" class="btn btn-primary btn-lg btn-block">
         <h3>Student Portal</h3>
     </a>
 </div>
@@ -24,7 +24,7 @@ include('Extra/header.php');
     </a>
 </div>
 <div class="col-md-4">
-    <a href="admin_portal.php" class="btn btn-danger btn-lg btn-block">
+    <a href="admin/login.php" class="btn btn-danger btn-lg btn-block">
         <h3>Admin Portal</h3>
     </a>
 </div>
@@ -41,6 +41,15 @@ include('Extra/header.php');
             comprehensive tools for seamless academic operations.
         </p>
         <a href="#" class="cta-button">Get Started</a>
+    </section>
+
+    <section>
+        <h2>Our Mission</h2>
+        <p>
+            At TopScorer, our mission is to empower educators and students through cutting-edge technology.
+            We strive to enhance learning experiences and foster academic success by offering adaptable solutions
+            that meet the evolving needs of educational institutions worldwide.
+        </p>
     </section>
 
     <section>

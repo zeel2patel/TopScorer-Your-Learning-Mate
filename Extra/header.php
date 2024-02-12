@@ -20,9 +20,10 @@
         <nav>
             <ul>
                 <li><a href="./home.php">Home</a></li>
-                <li><a href="#">Courses</a></li>
+                <li><a href="./courses.php">Courses</a></li>
                 <li><a href="./addmission.php">addmission</a></li>
-                <li><a href="#">Content</a></li>
+                <li><a href="./admin/login.php">Admin</a></li>
+                <li><a href="./user/login.php">Student</a></li>
             </ul>
         </nav>
     </header>
