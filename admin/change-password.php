@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-include('includes/dbconnection.php');
+include('includes/db_connect.php');
 error_reporting(0);
 if (strlen($_SESSION['sturecmsaid']==0)) {
   header('location:logout.php');

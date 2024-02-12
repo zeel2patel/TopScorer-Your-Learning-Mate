@@ -48,7 +48,6 @@ include('Extra/header.php');
                 <a href="apply.php?course_id=2" class="apply-button">Apply</a>
                 <a href="course_details.php?course_id=2" class="details-button">View Details</a>
             </div>
-            <!-- Add more courses as needed -->
         </div>
     </section>
 
