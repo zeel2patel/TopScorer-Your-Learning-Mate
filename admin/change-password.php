@@ -20,6 +20,22 @@
     <?php include_once('includes/header.php'); ?>
     <div class="container-fluid page-body-wrapper">
       <?php include_once('includes/sidebar.php'); ?>
+      <?php
+      if (isset($_POST['changepassword'])) {
+        $currentpassword = $_POST['currentpassword'];
+        $newpassword = $_POST['newpassword'];
+        $confirmpassword = $_POST['confirmpassword'];
+
+        $cngpassworderrors = [];
+
+        if (md5($currentpassword) == $row['password']) {
+          # code...
+        } else {
+          $cngpassworderrors[] = "<p style='color: red;'>Current password is not matching with database. Please Enter Valid current password.</p>";
+            header("location: addfield.php");
+        }
+      }
+      ?>
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="page-header">
@@ -53,7 +69,7 @@
                       <input type="password" name="confirmpassword" id="confirmpassword" value="" class="form-control">
                     </div>
 
-                    <button type="submit" class="btn btn-primary mr-2" name="submit">Change</button>
+                    <button type="submit" class="btn btn-primary mr-2" name="changepassword">Change</button>
 
                   </form>
                 </div>
