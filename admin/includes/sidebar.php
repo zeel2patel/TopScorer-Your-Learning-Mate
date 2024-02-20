@@ -3,11 +3,11 @@
     <li class="nav-item nav-profile">
       <a href="#" class="nav-link">
         <div class="profile-image">
-          <img class="img-xs rounded-circle" src="images/faces/face8.jpg" alt="profile image">
+          <img class="img-xs rounded-circle" src="images/favicon.jpg" alt="profile image">
         </div>
         <div class="text-wrapper">
-          <p class="profile-name">Admin</p>
-          <p class="designation">Admin@gmail.com</p>
+          <p class="profile-name"><?php echo $row['username']; ?></p>
+          <p class="designation"><?php echo $row['email']; ?></p>
         </div>
 
       </a>

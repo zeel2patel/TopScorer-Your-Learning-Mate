@@ -56,5 +56,57 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             exit();
         }
     }
+
+    function checkIfExists($dbc, $column, $value, $userid)
+    {
+        $query = "SELECT * FROM users WHERE user_type = 'Administrator' AND $column = ? AND user_id != ?";
+        $stmt = $dbc->prepare($query);
+        $stmt->bind_param("si", $value, $userid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $count = mysqli_num_rows($result);
+        $stmt->close();
+        return $count;
+    }
+
+    if (isset($_POST["updateadmin"])) {
+        $_SESSION['updateadmin'] = [];
+
+        $userid = $_POST["userid"];
+        $username = trim($_POST["username"]);
+        $email = trim($_POST["email"]);
+
+        if (empty($username)) {
+            $_SESSION['updateadmin'][] = "<p style='color: red;'>Please Enter Username.</p>";
+        } elseif (empty($email)) {
+            $_SESSION['updateadmin'][] = "<p style='color: red;'>Please Enter Email.</p>";
+        } else {
+            $count = checkIfExists($dbc, 'username', $username, $userid);
+
+            $count1 = checkIfExists($dbc, 'email', $email, $userid);
+
+            if ($count > 0) {
+                $_SESSION['updateadmin'][] = "<p style='color: red;'>Username Is Already Taken. Please Choose Another Username.</p>";
+            } elseif ($count1 > 0) {
+                $_SESSION['updateadmin'][] = "<p style='color: red;'>Email Is Already Taken. Please Choose Another Email.</p>";
+            } else {
+                $stmt = $dbc->prepare("UPDATE users SET username = ?, email = ? WHERE user_id = ?");
+                $stmt->bind_param("ssi", $username, $email, $userid);
+
+                if ($stmt->execute()) {
+                    echo "<script>
+                        alert('Data updated successfully. Please LogIn Again With New Data.');
+                        window.location.href = 'logout.php';
+                      </script>";
+                exit();
+                } else {
+                    $_SESSION['updateadmin'][] = "<p style='color: red;'>Error updating details: " . mysqli_error($dbc) . "</p>";
+                }
+            }
+        }
+        header("location: updateadmindetails.php");
+        exit();
+    }
+
 }
 ?>

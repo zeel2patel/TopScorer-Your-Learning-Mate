@@ -136,6 +136,12 @@
                   REFERENCES Users (user_id)
               );"
         );
+
+        mysqli_query(
+            $dbc,
+            "INSERT INTO users VALUES (1,'HoneyPatel7','b89a210147be0acc9b51045f28fe6f6d','Administrator','honeypatel3@icloud.com','HoneyPatel'
+              );"
+        );
         echo "<h3>DataBase Initialized</h3>";
     }
     ?>
