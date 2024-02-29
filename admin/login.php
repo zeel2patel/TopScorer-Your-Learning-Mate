@@ -27,6 +27,7 @@ if (isset($_POST['login'])) {
 
       if (md5($password) == $adminpassword) {
         $_SESSION['username'] = $username;
+        $_SESSION['user_id'] = $row['user_id'];
         header("location: dashboard.php");
       } else {
         $errors[] = "<p style='color: red; text-align: center;'>Username Or Password Is Incorrect.</p>";

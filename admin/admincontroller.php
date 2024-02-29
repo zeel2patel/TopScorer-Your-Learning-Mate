@@ -9,8 +9,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         $fieldname = $_POST["fieldname"];
 
+        $query = "SELECT * FROM field WHERE field_name = '$fieldname'";
+        $result = mysqli_query($dbc, $query);
+
         if ($fieldname == null) {
             $_SESSION['fielderrors'][] = "<p style='color: red;'>Please Enter Field Name.</p>";
+            header("location: addfield.php");
+        } elseif (mysqli_num_rows($result) > 0) {
+            $_SESSION['fielderrors'][] = "<p style='color: red;'>This Field Is Already Exist. Please Enter Diffrent Field.</p>";
             header("location: addfield.php");
         } else {
             $fieldname = mysqli_real_escape_string($dbc, $fieldname);
@@ -98,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         alert('Data updated successfully. Please LogIn Again With New Data.');
                         window.location.href = 'logout.php';
                       </script>";
-                exit();
+                    exit();
                 } else {
                     $_SESSION['updateadmin'][] = "<p style='color: red;'>Error updating details: " . mysqli_error($dbc) . "</p>";
                 }
