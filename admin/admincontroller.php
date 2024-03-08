@@ -114,5 +114,88 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         exit();
     }
 
+    if (isset($_POST["addcourse"])) {
+        $_SESSION['courseerrors'] = [];
+
+        $coursename = $_POST["coursename"];
+        $coursedescription = $_POST["coursedesc"];
+        $field = $_POST["field"];
+        $_SESSION['coursename'] = $coursename;
+        $_SESSION['coursedesc'] = $coursedescription;
+        $_SESSION['field_id'] = $field;
+
+        $query = "SELECT * FROM courses WHERE course_name = '$coursename' AND field_id = '$field'";
+        $result = mysqli_query($dbc, $query);
+
+        if ($coursename == null) {
+            $_SESSION['courseerrors'][] = "<p style='color: red;'>Please Enter Course Name.</p>";
+            header("location: addcourse.php");
+        } elseif ($coursedescription == null) {
+            $_SESSION['courseerrors'][] = "<p style='color: red;'>Please Enter Course Description.</p>";
+            header("location: addcourse.php");
+        } elseif ($field == null) {
+            $_SESSION['courseerrors'][] = "<p style='color: red;'>Please Select Field Name.</p>";
+            header("location: addcourse.php");
+        } elseif (mysqli_num_rows($result) > 0) {
+            $_SESSION['courseerrors'][] = "<p style='color: red;'>This Course Is Already Exist. Please Enter Different Course Name.</p>";
+            header("location: addcourse.php");
+        } else {
+
+            $stmt = $dbc->prepare("INSERT INTO courses (course_name, course_description, field_id) VALUES (?, ?, ?)");
+            $stmt->bind_param("ssi", $coursename, $coursedescription, $field);
+
+            $stmt->execute();
+
+            $stmt->close();
+            mysqli_close($dbc);
+
+            $_SESSION['courseerrors'][] = "<p style='color: green;'>Course Entered Successfully.</p>";
+            unset($_SESSION['coursename']);
+            unset($_SESSION['coursedesc']);
+            unset($_SESSION['field_id']);
+            header("location: addcourse.php");
+            exit();
+        }
+    }
+
+    if (isset($_POST["updatecourse"])) {
+        $_SESSION['courseerrors'] = [];
+
+        $course_id = $_POST["course_id"];
+        $coursename = $_POST["coursename"];
+        $coursedescription = $_POST["coursedesc"];
+        $field = $_POST["field"];
+        $_SESSION['coursename'] = $coursename;
+        $_SESSION['coursedesc'] = $coursedescription;
+        $_SESSION['field_id'] = $field;
+
+        if ($coursename == null) {
+            $_SESSION['courseerrors'][] = "<p style='color: red;'>Please Enter Course Name.</p>";
+            header("location: updatecourse.php?id=$course_id");
+        } elseif ($coursedescription == null) {
+            $_SESSION['courseerrors'][] = "<p style='color: red;'>Please Enter Course Description.</p>";
+            header("location: updatecourse.php?id=$course_id");
+        } elseif ($field == null) {
+            $_SESSION['courseerrors'][] = "<p style='color: red;'>Please Select Field Name.</p>";
+            header("location: updatecourse.php?id=$course_id");
+        } else {
+            $stmt = $dbc->prepare("UPDATE courses SET course_name=?, course_description=?, field_id=? WHERE course_id=?");
+            $stmt->bind_param("ssii", $coursename, $coursedescription, $field, $course_id);
+
+            $stmt->execute();
+
+            $stmt->close();
+            mysqli_close($dbc);
+
+            $_SESSION['courseerrors'][] = "<p style='color: green;'>Course Updated Successfully.</p>";
+            unset($_SESSION['coursename']);
+            unset($_SESSION['coursedesc']);
+            unset($_SESSION['field_id']);
+            header("location: updatecourse.php?id=$course_id");
+            exit();
+        }
+    }
+
+
 }
 ?>

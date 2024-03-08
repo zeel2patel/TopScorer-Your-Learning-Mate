@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="vendors/select2/select2.min.css">
   <link rel="stylesheet" href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.jpg">
 
 </head>
 
@@ -23,11 +24,11 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Add & Manage Fields </h3>
+              <h3 class="page-title"> Add & Manage Departments </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"> Add & Manage Fields</li>
+                  <li class="breadcrumb-item active" aria-current="page"> Add & Manage Departments</li>
                 </ol>
               </nav>
             </div>
@@ -36,7 +37,7 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;">Add Field</h4>
+                    <h4 class="card-title" style="text-align: center;">Add Departments</h4>
 
                     <form class="forms-sample" method="post" action="admincontroller.php">
                       <?php
@@ -48,7 +49,7 @@
                       }
                       ?>
                       <div class="form-group">
-                        <label for="exampleInputName1">Field Name</label>
+                        <label for="exampleInputName1">Department Name</label>
                         <input type="text" name="fieldname" class="form-control">
                       </div>
                       <button type="submit" class="btn btn-primary mr-2" name="addfield">Add</button>
@@ -62,7 +63,7 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="d-sm-flex align-items-center mb-4">
-                      <h4 class="card-title mb-sm-0" style="margin: 0 auto;">Manage Fields</h4>
+                      <h4 class="card-title mb-sm-0" style="margin: 0 auto;">Manage Departments</h4>
                     </div>
                     <?php
                     if (isset($_SESSION['fieldupdate']) && is_array($_SESSION['fieldupdate'])) {

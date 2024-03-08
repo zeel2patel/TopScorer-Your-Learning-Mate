@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="./vendors/daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="./vendors/chartist/chartist.min.css">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.jpg">
 
 </head>
 
@@ -23,11 +24,11 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Manage Students </h3>
+              <h3 class="page-title"> Manage Courses </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"> Manage Students</li>
+                  <li class="breadcrumb-item active" aria-current="page"> Manage Courses</li>
                 </ol>
               </nav>
             </div>
@@ -36,50 +37,53 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="d-sm-flex align-items-center mb-4">
-                      <h4 class="card-title mb-sm-0">Manage Students</h4>
-                      <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all Students</a>
+                      <h4 class="card-title mb-sm-0">Manage Courses</h4>
                     </div>
+                    <?php
+                    if (isset($_SESSION['courseerrors']) && is_array($_SESSION['courseerrors'])) {
+                      foreach ($_SESSION['courseerrors'] as $error) {
+                        echo $error;
+                      }
+                      unset($_SESSION['courseerrors']);
+                    }
+                    ?>
                     <div class="table-responsive border rounded p-1">
                       <table class="table">
                         <thead>
                           <tr>
-                            <th class="font-weight-bold">S.No</th>
-                            <th class="font-weight-bold">Student ID</th>
-                            <th class="font-weight-bold">Student Class</th>
-                            <th class="font-weight-bold">Student Name</th>
-                            <th class="font-weight-bold">Student Email</th>
-                            <th class="font-weight-bold">Admissin Date</th>
+                            <th class="font-weight-bold">Course Name</th>
+                            <th class="font-weight-bold">Course Description</th>
+                            <th class="font-weight-bold">Field Name</th>
                             <th class="font-weight-bold">Action</th>
-
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-
-                            <td>
-                              1
-                            </td>
-                            <td>
-                              1
-                            </td>
-                            <td>
-                              2G28
-                            </td>
-                            <td>
-                              Admin
-                            </td>
-                            <td>
-                              Admin@gmail.com
-                            </td>
-                            <td>
-                              08/10/2001
-                            </td>
-                            <td>
-                              <div><a><i class="icon-eye"></i></a>
-                                || <a onclick="return confirm('Do you really want to Delete ?');"> <i
-                                    class="icon-trash"></i></a></div>
-                            </td>
-                          </tr>
+                          <?php
+                          $query = "SELECT a.*, b.field_name FROM courses a, field b WHERE a.field_id = b.field_id";
+                          $result = mysqli_query($dbc, $query);
+                          while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
+                            <tr>
+                              <td>
+                                <?php echo $row['course_name'] ?>
+                              </td>
+                              <td>
+                                <?php echo $row['course_description'] ?>
+                              </td>
+                              <td>
+                                <?php echo $row['field_name'] ?>
+                              </td>
+                              <td>
+                                <div><a style="text-decoration: none; color: black;"
+                                    href="updatecourse.php?id=<?php echo htmlspecialchars($row['course_id']); ?>"><i
+                                      class="icon-eye"></i></a>
+                                  || <a style="text-decoration: none; color: black;"
+                                    href="deletecourse.php?id=<?php echo htmlspecialchars($row['course_id']); ?>"
+                                    onclick="return confirm('Do you really want to Delete ?');"> <i
+                                      class="icon-trash"></i></a></div>
+                              </td>
+                            </tr>
+                          <?php } ?>
                         </tbody>
                       </table>
                     </div>

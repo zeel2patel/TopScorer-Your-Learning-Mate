@@ -29,6 +29,8 @@
       <div class="collapse" id="ui-basic1">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="addfield.php">Add & Manage Fields</a></li>
+          <li class="nav-item"> <a class="nav-link" href="addcourse.php">Add Courses</a></li>
+          <li class="nav-item"> <a class="nav-link" href="managecourse.php">Manage Courses</a></li>
         </ul>
       </div>
     </li>

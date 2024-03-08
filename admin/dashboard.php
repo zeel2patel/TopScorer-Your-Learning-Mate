@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="vendors/daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="vendors/chartist/chartist.min.css">
   <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.jpg">
 
 </head>
 
