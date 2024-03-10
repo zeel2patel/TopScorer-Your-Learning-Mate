@@ -18,17 +18,28 @@
     <li class="nav-item">
       <a class="nav-link" href="dashboard.php">
         <span class="menu-title">Dashboard</span>
-        <i class="icon-screen-desktop menu-icon"></i>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="true" aria-controls="ui-basic1">
         <span class="menu-title">Field & Courses</span>
-        <i class="icon-people menu-icon"></i>
       </a>
       <div class="collapse" id="ui-basic1">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="addfield.php">Add & Manage Fields</a></li>
+          <li class="nav-item"> <a class="nav-link" href="addcourse.php">Add Courses</a></li>
+          <li class="nav-item"> <a class="nav-link" href="managecourse.php">Manage Courses</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
+        <span class="menu-title">Semester Management</span>
+      </a>
+      <div class="collapse" id="ui-basic2">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="addsemester.php">Add Semesters</a></li>
+          <li class="nav-item"> <a class="nav-link" href="managesemester.php">Manage Semesters</a></li>
         </ul>
       </div>
     </li>

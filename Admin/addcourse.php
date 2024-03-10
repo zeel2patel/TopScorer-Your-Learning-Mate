@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="vendors/select2/select2.min.css">
   <link rel="stylesheet" href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.jpg">
 
 </head>
 
@@ -23,11 +24,11 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Add Students </h3>
+              <h3 class="page-title"> Add Courses </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"> Add Students</li>
+                  <li class="breadcrumb-item active" aria-current="page"> Add Courses</li>
                 </ol>
               </nav>
             </div>
@@ -36,78 +37,94 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;">Add Students</h4>
+                    <h4 class="card-title" style="text-align: center;">Add Courses</h4>
 
-                    <form class="forms-sample" method="post" enctype="multipart/form-data">
-
+                    <form class="forms-sample" method="post" action="admincontroller.php">
+                      <?php
+                      if (isset($_SESSION['courseerrors']) && is_array($_SESSION['courseerrors'])) {
+                        foreach ($_SESSION['courseerrors'] as $error) {
+                          echo $error;
+                        }
+                        unset($_SESSION['courseerrors']);
+                      }
+                      ?>
                       <div class="form-group">
-                        <label for="exampleInputName1">Student Name</label>
-                        <input type="text" name="stuname" value="" class="form-control" required='true'>
+                        <label for="exampleInputName1">Course Name</label>
+                        <input type="text" name="coursename" value="<?php if (isset($_SESSION['coursename'])) {
+                          echo $_SESSION['coursename'];
+                        }
+                        unset($_SESSION['coursename']);
+                        ?>" class="form-control">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Student Email</label>
-                        <input type="text" name="stuemail" value="" class="form-control" required='true'>
+                        <label for="exampleInputName1">Course Description</label>
+                        <textarea type="text" rows="6" name="coursedesc" class="form-control"><?php if (isset($_SESSION['coursedesc'])) {
+                          echo $_SESSION['coursedesc'];
+                        }
+                        unset($_SESSION['coursedesc']); ?></textarea>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputEmail3">Student Class</label>
-                        <select name="stuclass" class="form-control" required='true'>
-                          <option value="">Select Class</option>
+                        <label for="exampleInputName1">Department</label>
+                        <select name="field" class="form-control">
+                          <option value="<?php if (isset($_SESSION['field_id'])) {
+                            echo $_SESSION['field_id'];
+                          } ?>" selected>
+                            <?php if (isset($_SESSION['field_id'])) {
+                              $id = $_SESSION['field_id'];
+                              $query1 = "SELECT * FROM field WHERE field_id = '$id'";
+                              $result1 = mysqli_query($dbc, $query1);
+                              if ($result1) {
+                                $row1 = mysqli_fetch_array($result1);
+                                if ($row1 && isset($row1["field_name"])) {
+                                  echo $row1["field_name"];
+                                }
+                              }
+                            }
+                            unset($_SESSION['field_id']); ?>
+                          </option>
+                          <?php
+                          $query = "SELECT * FROM field";
+                          $result = mysqli_query($dbc, $query);
+                          while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
+                            <option value="<?php echo $row['field_id'] ?>">
+                              <?php echo $row['field_name'] ?>
+                            </option>
+                          <?php } ?>
                         </select>
                       </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Gender</label>
-                        <select name="gender" value="" class="form-control" required='true'>
-                          <option value="">Choose Gender</option>
-                          <option value="Male">Male</option>
-                          <option value="Female">Female</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Date of Birth</label>
-                        <input type="date" name="dob" value="" class="form-control" required='true'>
-                      </div>
 
                       <div class="form-group">
-                        <label for="exampleInputName1">Student ID</label>
-                        <input type="text" name="stuid" value="" class="form-control" required='true'>
+                        <label for="exampleInputName1">Semester</label>
+                        <select name="semester" class="form-control">
+                          <option value="<?php if (isset($_SESSION['semester_id'])) {
+                            echo $_SESSION['semester_id'];
+                          } ?>" selected>
+                            <?php if (isset($_SESSION['semester_id'])) {
+                              $id = $_SESSION['semester_id'];
+                              $semester_query1 = "SELECT * FROM semesters WHERE semester_id = '$id'";
+                              $semester_result1 = mysqli_query($dbc, $semester_query1);
+                              if ($semester_result1) {
+                                $semester_row1 = mysqli_fetch_array($semester_result1);
+                                if ($semester_row1 && isset($row1["semester_name"])) {
+                                  echo $semester_row1["semester_name"];
+                                }
+                              }
+                            }
+                            unset($_SESSION['semester_id']); ?>
+                          </option>
+                          <?php
+                          $semester_query = "SELECT * FROM semesters";
+                          $semester_result = mysqli_query($dbc, $semester_query);
+                          while ($semester_row = mysqli_fetch_assoc($semester_result)) {
+                            ?>
+                            <option value="<?php echo $semester_row['semester_id'] ?>">
+                              <?php echo $semester_row['semester_name'] ?>
+                            </option>
+                          <?php } ?>
+                        </select>
                       </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Student Photo</label>
-                        <input type="file" name="image" value="" class="form-control" required='true'>
-                      </div>
-                      <h3>Parents/Guardian's details</h3>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Father's Name</label>
-                        <input type="text" name="fname" value="" class="form-control" required='true'>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Mother's Name</label>
-                        <input type="text" name="mname" value="" class="form-control" required='true'>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Contact Number</label>
-                        <input type="text" name="connum" value="" class="form-control" required='true' maxlength="10"
-                          pattern="[0-9]+">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Alternate Contact Number</label>
-                        <input type="text" name="altconnum" value="" class="form-control" required='true' maxlength="10"
-                          pattern="[0-9]+">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Address</label>
-                        <textarea name="address" class="form-control" required='true'></textarea>
-                      </div>
-                      <h3>Login details</h3>
-                      <div class="form-group">
-                        <label for="exampleInputName1">User Name</label>
-                        <input type="text" name="uname" value="" class="form-control" required='true'>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Password</label>
-                        <input type="Password" name="password" value="" class="form-control" required='true'>
-                      </div>
-                      <button type="submit" class="btn btn-primary mr-2" name="submit">Add</button>
+                      <button type="submit" name="addcourse" class="btn btn-primary mr-2" name="submit">Add</button>
 
                     </form>
                   </div>

@@ -24,15 +24,11 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Welcome,
-                <?php echo $row['username']; ?>
-              </h3>
+              <h3 class="page-title"> Add Semesters </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">
-                    <?php echo $row['username']; ?>'s Profile
-                  </li>
+                  <li class="breadcrumb-item active" aria-current="page"> Add Semesters</li>
                 </ol>
               </nav>
             </div>
@@ -41,21 +37,34 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;">Admin Profile</h4>
+                    <h4 class="card-title" style="text-align: center;">Add Semesters</h4>
 
-                    <form class="forms-sample" method="post">
+                    <form class="forms-sample" method="post" action="admincontroller.php">
+                      <?php
+                      if (isset($_SESSION['semestererrors']) && is_array($_SESSION['semestererrors'])) {
+                        foreach ($_SESSION['semestererrors'] as $error) {
+                          echo $error;
+                        }
+                        unset($_SESSION['semestererrors']);
+                      }
+                      ?>
                       <div class="form-group">
-                        <label for="exampleInputEmail3">User Name</label>
-                        <input type="text" name="username" value="<?php echo $row['username']; ?>" class="form-control"
-                          readonly>
+                        <label for="exampleInputName1">Semester Name</label>
+                        <input type="text" name="semestername" value="<?php if (isset($_SESSION['semestername'])) {
+                          echo $_SESSION['semestername'];
+                        }
+                        unset($_SESSION['semestername']);
+                        ?>" class="form-control">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputCity1">Email</label>
-                        <input type="email" name="email" value="<?php echo $row['email']; ?>" class="form-control"
-                          readonly>
+                        <label for="exampleInputName1">Semester Start Date</label>
+                        <input type="date" name="startdate" class="form-control">
                       </div>
-                      <a href="updateadmindetails.php?id=<?php echo $row['user_id']; ?>" type="submit"
-                        class="btn btn-primary mr-2" name="submit">Change Details</a>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Semester End Date</label>
+                        <input type="date" name="enddate" class="form-control">
+                      </div>
+                      <button type="submit" name="addsemester" class="btn btn-primary mr-2" name="submit">Add</button>
 
                     </form>
                   </div>
@@ -75,6 +84,8 @@
     <script src="js/typeahead.js"></script>
     <script src="js/select2.js"></script>
   </body>
+
+  </html>
   <?php
     } else {
       header("location: logout.php");

@@ -24,11 +24,11 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Manage Courses </h3>
+              <h3 class="page-title"> Manage Semester</h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"> Manage Courses</li>
+                  <li class="breadcrumb-item active" aria-current="page"> Manage Semester</li>
                 </ol>
               </nav>
             </div>
@@ -37,52 +37,48 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="d-sm-flex align-items-center mb-4">
-                      <h4 class="card-title mb-sm-0">Manage Courses</h4>
+                      <h4 class="card-title mb-sm-0">Manage Semester</h4>
                     </div>
                     <?php
-                    if (isset($_SESSION['courseerrors']) && is_array($_SESSION['courseerrors'])) {
-                      foreach ($_SESSION['courseerrors'] as $error) {
+                    if (isset($_SESSION['semestererrors']) && is_array($_SESSION['semestererrors'])) {
+                      foreach ($_SESSION['semestererrors'] as $error) {
                         echo $error;
                       }
-                      unset($_SESSION['courseerrors']);
+                      unset($_SESSION['semestererrors']);
                     }
                     ?>
                     <div class="table-responsive border rounded p-1">
                       <table class="table">
                         <thead>
                           <tr>
-                            <th class="font-weight-bold">Course Name</th>
-                            <th class="font-weight-bold">Course Description</th>
-                            <th class="font-weight-bold">Field Name</th>
                             <th class="font-weight-bold">Semester Name</th>
+                            <th class="font-weight-bold">Semester Start Date</th>
+                            <th class="font-weight-bold">Semester End Date</th>
                             <th class="font-weight-bold">Action</th>
                           </tr>
                         </thead>
                         <tbody>
                           <?php
-                          $query = "SELECT a.*, b.field_name, c.semester_name FROM courses a, field b, semesters c WHERE a.field_id = b.field_id AND a.semester_id = c.semester_id";
+                          $query = "SELECT * FROM semesters";
                           $result = mysqli_query($dbc, $query);
                           while ($row = mysqli_fetch_assoc($result)) {
                             ?>
                             <tr>
                               <td>
-                                <?php echo $row['course_name'] ?>
-                              </td>
-                              <td>
-                                <?php echo $row['course_description'] ?>
-                              </td>
-                              <td>
-                                <?php echo $row['field_name'] ?>
-                              </td>
-                              <td>
                                 <?php echo $row['semester_name'] ?>
                               </td>
                               <td>
+                                <?php echo $row['start_date'] ?>
+                              </td>
+                              <td>
+                                <?php echo $row['end_date'] ?>
+                              </td>
+                              <td>
                                 <div><a style="text-decoration: none; color: black;"
-                                    href="updatecourse.php?id=<?php echo htmlspecialchars($row['course_id']); ?>"><i
+                                    href="updatesemester.php?id=<?php echo htmlspecialchars($row['semester_id']); ?>"><i
                                       class="icon-note"></i></a>
                                   || <a style="text-decoration: none; color: black;"
-                                    href="deletecourse.php?id=<?php echo htmlspecialchars($row['course_id']); ?>"
+                                    href="deletesemester.php?id=<?php echo htmlspecialchars($row['semester_id']); ?>"
                                     onclick="return confirm('Do you really want to Delete ?');"> <i
                                       class="icon-trash"></i></a></div>
                               </td>

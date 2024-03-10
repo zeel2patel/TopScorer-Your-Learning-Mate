@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="vendors/select2/select2.min.css">
     <link rel="stylesheet" href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.jpg">
 
 </head>
 
@@ -23,11 +24,11 @@
                 <div class="main-panel">
                     <div class="content-wrapper">
                         <div class="page-header">
-                            <h3 class="page-title"> Update Fields </h3>
+                            <h3 class="page-title"> Update Departments </h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Update Fields</li>
+                                    <li class="breadcrumb-item active" aria-current="page"> Update Departments</li>
                                 </ol>
                             </nav>
                         </div>
