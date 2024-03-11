@@ -1,15 +1,12 @@
-<?php
-include('Admin/includes/db_connect.php');
-include('Extra/header.php');
-?>
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TopScorer - Courses</title>
+    <title>TopScorer - Your Learning Mate</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.jpg">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -87,9 +84,14 @@ include('Extra/header.php');
 </head>
 
 <body>
-    <div class="container">
-        <div class="dropdown-container" style="display:flex; justify-content: space-evenly; align-items: center;">
-            <label for="departments">Select Department:</label>
+    <?php
+    if (isset($_SESSION['student_username'])) {
+        include('Admin/includes/db_connect.php');
+        include('Extra/header_student.php');
+        ?>
+        <div class="container">
+            <div class="dropdown-container" style="display:flex; justify-content: space-evenly; align-items: center;">
+                <label for="departments">Select Department:</label>
                 <select id="departments" name="departments">
                     <option selected disabled>All Courses</option>
                     <?php
@@ -102,45 +104,54 @@ include('Extra/header.php');
                         </option>
                     <?php } ?>
                 </select>
+            </div>
+
+            <div class="card-container">
+                <?php
+                $coursequery = "SELECT a.*, b.semester_name FROM courses a, semesters b WHERE a.semester_id = b.semester_id";
+                $courseresult = mysqli_query($dbc, $coursequery);
+                while ($row = mysqli_fetch_assoc($courseresult)) {
+                    ?>
+                    <div class="card">
+                        <h3>
+                            <?php echo $row['course_name']; ?>
+                        </h3>
+                        <p>
+                            <?php echo $row['semester_name'] ?>
+                        </p>
+                        <button><a href="coursedetails.php?course_id=<?php echo $row['course_id']; ?>">Learn More</a></button>
+                    </div>
+                <?php } ?>
+            </div>
         </div>
 
-        <div class="card-container">
-            <?php
-            $coursequery = "SELECT * FROM courses";
-            $courseresult = mysqli_query($dbc, $coursequery);
-            while ($row = mysqli_fetch_assoc($courseresult)) {
-                ?>
-                <div class="card">
-                    <h3><?php echo $row['course_name']; ?></h3>
-                    <p><?php echo $row['course_description']; ?></p>
-                    <button><a href="apply.php?course_id=<?php echo $row['course_id']; ?>">Apply</a></button>
-                </div>
-            <?php } ?>
-        </div>
-    </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#departments").on('change', function () {
+                    var value = $(this).val();
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#departments").on('change', function () {
-                var value = $(this).val();
-
-                $.ajax({
-                    url:"display.php",
-                    type:"POST",
-                    data:'request=' + value,
-                    beforeSend:function(){
-                        $(".card-container").html("<span>Working....</span>");
-                    },
-                    success:function(data){
-                        $(".card-container").html(data);
-                    }
+                    $.ajax({
+                        url: "display.php",
+                        type: "POST",
+                        data: 'request=' + value,
+                        beforeSend: function () {
+                            $(".card-container").html("<span>Working....</span>");
+                        },
+                        success: function (data) {
+                            $(".card-container").html(data);
+                        }
+                    });
                 });
             });
-        });
-    </script>
+        </script>
 
-    <?php include('Extra/footer.php'); ?>
+        <?php include('Extra/footer_student.php'); ?>
 
-</body>
+    </body>
 
-</html>
+    </html>
+    <?php
+    } else {
+        header("location: logout_student.php");
+    }
+    ?>

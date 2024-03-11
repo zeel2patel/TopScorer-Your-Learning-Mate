@@ -1,5 +1,5 @@
 <?php
-include('Extra/header.php');
+include('Extra/header_student.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +59,7 @@ include('Extra/header.php');
 <body>
     <div class="row m-auto text-center flex">
         <div class="col-md-4">
-            <a href="user/login.php" class="btn btn-primary btn-lg btn-block">
+            <a href="user/login_student.php" class="btn btn-primary btn-lg btn-block">
                 <h3>Student Portal</h3>
             </a>
         </div>
@@ -69,7 +69,7 @@ include('Extra/header.php');
             </a>
         </div>
         <div class="col-md-4">
-            <a href="admin/login.php" class="btn btn-danger btn-lg btn-block">
+            <a href="admin/login_student.php" class="btn btn-danger btn-lg btn-block">
                 <h3>Admin Portal</h3>
             </a>
         </div>
@@ -113,5 +113,5 @@ include('Extra/header.php');
 </html>
 
 <?php
-include('Extra/footer.php');
+include('Extra/footer_student.php');
 ?>

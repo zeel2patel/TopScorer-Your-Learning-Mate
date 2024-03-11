@@ -54,12 +54,13 @@
                             <th class="font-weight-bold">Course Name</th>
                             <th class="font-weight-bold">Course Description</th>
                             <th class="font-weight-bold">Field Name</th>
+                            <th class="font-weight-bold">Semester Name</th>
                             <th class="font-weight-bold">Action</th>
                           </tr>
                         </thead>
                         <tbody>
                           <?php
-                          $query = "SELECT a.*, b.field_name FROM courses a, field b WHERE a.field_id = b.field_id";
+                          $query = "SELECT a.*, b.field_name, c.semester_name FROM courses a, field b, semesters c WHERE a.field_id = b.field_id AND a.semester_id = c.semester_id";
                           $result = mysqli_query($dbc, $query);
                           while ($row = mysqli_fetch_assoc($result)) {
                             ?>
@@ -74,9 +75,12 @@
                                 <?php echo $row['field_name'] ?>
                               </td>
                               <td>
+                                <?php echo $row['semester_name'] ?>
+                              </td>
+                              <td>
                                 <div><a style="text-decoration: none; color: black;"
                                     href="updatecourse.php?id=<?php echo htmlspecialchars($row['course_id']); ?>"><i
-                                      class="icon-eye"></i></a>
+                                      class="icon-note"></i></a>
                                   || <a style="text-decoration: none; color: black;"
                                     href="deletecourse.php?id=<?php echo htmlspecialchars($row['course_id']); ?>"
                                     onclick="return confirm('Do you really want to Delete ?');"> <i

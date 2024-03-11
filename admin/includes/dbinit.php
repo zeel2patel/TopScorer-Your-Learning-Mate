@@ -51,9 +51,12 @@
                 course_name VARCHAR(255) NOT NULL,
                 course_description TEXT NULL DEFAULT NULL,
                 field_id INT NULL DEFAULT NULL,
+                semester_id INT NULL DEFAULT NULL,
                 PRIMARY KEY (course_id),
                   FOREIGN KEY (field_id)
-                  REFERENCES Field (field_id)
+                  REFERENCES Field (field_id),
+                  FOREIGN KEY (semester_id)
+                  REFERENCES semesters (semester_id)
               );"
         );
 

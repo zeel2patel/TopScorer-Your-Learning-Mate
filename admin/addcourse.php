@@ -64,7 +64,7 @@
                         unset($_SESSION['coursedesc']); ?></textarea>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Field</label>
+                        <label for="exampleInputName1">Department</label>
                         <select name="field" class="form-control">
                           <option value="<?php if (isset($_SESSION['field_id'])) {
                             echo $_SESSION['field_id'];
@@ -89,6 +89,37 @@
                             ?>
                             <option value="<?php echo $row['field_id'] ?>">
                               <?php echo $row['field_name'] ?>
+                            </option>
+                          <?php } ?>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputName1">Semester</label>
+                        <select name="semester" class="form-control">
+                          <option value="<?php if (isset($_SESSION['semester_id'])) {
+                            echo $_SESSION['semester_id'];
+                          } ?>" selected>
+                            <?php if (isset($_SESSION['semester_id'])) {
+                              $id = $_SESSION['semester_id'];
+                              $semester_query1 = "SELECT * FROM semesters WHERE semester_id = '$id'";
+                              $semester_result1 = mysqli_query($dbc, $semester_query1);
+                              if ($semester_result1) {
+                                $semester_row1 = mysqli_fetch_array($semester_result1);
+                                if ($semester_row1 && isset($row1["semester_name"])) {
+                                  echo $semester_row1["semester_name"];
+                                }
+                              }
+                            }
+                            unset($_SESSION['semester_id']); ?>
+                          </option>
+                          <?php
+                          $semester_query = "SELECT * FROM semesters";
+                          $semester_result = mysqli_query($dbc, $semester_query);
+                          while ($semester_row = mysqli_fetch_assoc($semester_result)) {
+                            ?>
+                            <option value="<?php echo $semester_row['semester_id'] ?>">
+                              <?php echo $semester_row['semester_name'] ?>
                             </option>
                           <?php } ?>
                         </select>

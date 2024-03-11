@@ -66,7 +66,7 @@
                                                     class="form-control"><?php echo isset($_SESSION['coursedesc']) ? $_SESSION['coursedesc'] : $course_row['course_description']; ?></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputName1">Field</label>
+                                                <label for="exampleInputName1">Department</label>
                                                 <select name="field" class="form-control">
                                                     <option
                                                         value="<?php echo isset($_SESSION['field_id']) ? $_SESSION['field_id'] : $course_row['field_id']; ?>"
@@ -98,6 +98,44 @@
                                                         ?>
                                                         <option value="<?php echo $row['field_id'] ?>">
                                                             <?php echo $row['field_name'] ?>
+                                                        </option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleInputName1">Semester</label>
+                                                <select name="semester" class="form-control">
+                                                    <option
+                                                        value="<?php echo isset($_SESSION['semester_id']) ? $_SESSION['semester_id'] : $course_row['semester_id']; ?>"
+                                                        selected>
+                                                        <?php
+                                                        $selectedSemesterId = isset($_SESSION['semester_id']) ? $_SESSION['semester_id'] : $course_row['semester_id'];
+
+                                                        if (isset($selectedSemesterId)) {
+                                                            $id = $selectedSemesterId;
+                                                            $query1 = "SELECT * FROM semesters WHERE semester_id = '$id'";
+                                                            $result1 = mysqli_query($dbc, $query1);
+
+                                                            if ($result1) {
+                                                                $row1 = mysqli_fetch_array($result1);
+
+                                                                if ($row1 && isset($row1["semester_name"])) {
+                                                                    echo $row1["semester_name"];
+                                                                }
+                                                            }
+
+                                                            unset($_SESSION['semester_id']);
+                                                        }
+                                                        ?>
+                                                    </option>
+                                                    <?php
+                                                    $query = "SELECT * FROM semesters";
+                                                    $result = mysqli_query($dbc, $query);
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        ?>
+                                                        <option value="<?php echo $row['semester_id'] ?>">
+                                                            <?php echo $row['semester_name'] ?>
                                                         </option>
                                                     <?php } ?>
                                                 </select>
