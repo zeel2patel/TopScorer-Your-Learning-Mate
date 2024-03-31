@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 html, body {
   height: 100%;
   margin: 0;
@@ -152,4 +153,160 @@ ul li {
 ul li a {
   text-decoration: none;
   color: white;
+=======
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.header{
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+.navbar {
+  display: flex;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 2em;
+  margin-left: auto;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+    margin-left: 20px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 25%;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: auto;
+    min-height: 250px;
+}
+
+.card h2 {
+    color: #333;
+}
+
+.card p {
+    color: #666;
+}
+
+.card a.cta-button {
+    background-color: #333;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.main {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    width: 500px;
+    margin: 20px;
+    text-align: center;
+}
+h1 {
+    color: #4CAF50;
+}
+ 
+label {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #555;
+    font-weight: bold;
+}
+select {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+ 
+input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+ 
+button {
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: #4CAF50;
+    width: 100%;
+    font-size: 16px;
+}
+
+.col-md-3 {
+  flex: 0 0 30%;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  margin: 10px 0;
+}
+
+ul li a {
+  text-decoration: none;
+  color: white;
+>>>>>>> dca3ad7e5005466afc739c01ee917dab6bfcdb2b
 }
