@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	$_SESSION  = array();
-	session_destroy();
-	header('location: login.php');
+	$_SESSION["student_loggedin"]="";
+	$_SESSION["student_loggedin"]=null;
+	header('location: ../index.php');
 	exit;
 ?>

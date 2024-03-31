@@ -1,34 +1,4 @@
-<footer>
-
-  <head>
-    <style>
-      footer {
-        background-color: #333;
-        color: #fff;
-        padding: 20px 0;
-        text-align: center;
-      }
-
-      .col-md-3 {
-        flex: 0 0 30%;
-        margin-bottom: 20px;
-      }
-
-      ul {
-        list-style: none;
-      }
-
-      ul li {
-        margin: 10px 0;
-      }
-
-      ul li a {
-        text-decoration: none;
-        color: white;
-      }
-    </style>
-  </head>
-  <div>
+  <div class="footer">
     <div class="row">
       <div class="col-md-3 segment-one">
         <h2><img style="width: 200px;" src="theme/img/logo.png" alt="Logo Image"></h2>
@@ -49,6 +19,6 @@
         <p>E-mail: admissions@topscorer.on.ca</p>
       </div>
     </div>
+    <p>&copy; 2024 TopScorer - Your Learning Mate. All Rights Reserved.</p>
   </div>
-  <p>&copy; 2024 TopScorer - Your Learning Mate. All Rights Reserved.</p>
-</footer>
+  

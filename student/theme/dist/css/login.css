@@ -170,7 +170,6 @@ body {
     border-image: none;
     border-style: solid solid none;
     border-width: 1px 0;
-    border-radius: 20px;
 }
 
 /* Backgrounds */
@@ -181,6 +180,21 @@ body {
 }
 
 /* Login & Register Pages*/
+
+.register-container {
+    max-width: 400px;
+    z-index: 100;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+label { color: whitesmoke; }
+label span { color: red; }
+.login.register-container {
+    width: 300px;
+}
+.wrapper.register-container {
+    margin-top: 140px;
+}
 
 .login-container {
     max-width: 400px;
@@ -201,10 +215,44 @@ body {
     letter-spacing: -10px;
     margin-bottom: 0;
 }
-.textcol{
-    color: whitesmoke;
-    font-size: 15px;
-    font-weight: bold;
-    letter-spacing: 0px;
-    margin-bottom: 0;
-}
+
+
+.btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+
+        #img-upload1{
+            width: 100%;
+        }
+        .
+        .img-fluid{
+          height: 150px; 
+          width: 100%; 
+          margin-bottom: 10px; 
+          border-radius:20px;
+          border: groove;
+        }
+        .show-p{
+          padding-left: 10px;
+          margin-top: 20px;
+          margin-bottom: 30px;
+        }
+        .warning{
+          color: red;
+        }
