@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Student Login</title>
+    <title>Courses</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -50,13 +50,12 @@
 
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
-            <?php include('theme/main_head.php');?>
-
+           <?php include('theme/main_head.php');?>
             <div class="container-xxl py-5 bg-primary hero-header mb-5">
                 <div class="container my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
                         <div class="col-12 text-center">
-                            <h1 class="text-white animated zoomIn">Course Selection</h1>
+                            <h1 class="text-white animated zoomIn">Courses</h1>
                             <hr class="bg-white mx-auto mt-0" style="width: 90px;">
                             
                         </div>
@@ -93,7 +92,7 @@
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="section-title position-relative mb-4 pb-2">
                             <h6 class="position-relative text-primary ps-4">Student Portal</h6>
-                            <h2 class="mt-2">Choosing what to study</h2>
+                            <h2 class="mt-2">Know More About Sources</h2>
                         </div>
                         <p class="mb-4"><ul>
                   <?php 
@@ -120,10 +119,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                      <h2 class="mt-2">Student Login</h2>
-                        <a class="btn" href="student/login.php" style="margin:5px;padding: 10px; background-color: #216A97;color: whitesmoke;font-weight: bold;border-radius: 10px; width:50%; cursor:pointer; margin-left:122px;">
-                   LOGIN NOW
-                </a>
+                    
                     </div>
                 </div>
             </div>
@@ -137,7 +133,7 @@
       
         
 
-        
+       
  <?php include('theme/main_footer.php');?>
 
         <!-- Back to Top -->

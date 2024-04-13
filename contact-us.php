@@ -1,14 +1,9 @@
-<?php  
-    @session_start();
-    include_once 'admin/function/dbConnection.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Student Login</title>
+    <title>Contact Us</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -50,13 +45,12 @@
 
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
-            <?php include('theme/main_head.php');?>
-
+         <?php include('theme/main_head.php');?>
             <div class="container-xxl py-5 bg-primary hero-header mb-5">
                 <div class="container my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
                         <div class="col-12 text-center">
-                            <h1 class="text-white animated zoomIn">Course Selection</h1>
+                            <h1 class="text-white animated zoomIn">Contact Us</h1>
                             <hr class="bg-white mx-auto mt-0" style="width: 90px;">
                             
                         </div>
@@ -86,60 +80,32 @@
         <!-- Full Screen Search End -->
 
 
-        <!-- About Start -->
+        <!-- Contact Start -->
         <div class="container-xxl py-5">
             <div class="container px-lg-5">
-                <div class="row g-5">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="section-title position-relative mb-4 pb-2">
-                            <h6 class="position-relative text-primary ps-4">Student Portal</h6>
-                            <h2 class="mt-2">Choosing what to study</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                            <h6 class="position-relative d-inline text-primary ps-4">Top Scorer</h6>
+                            <h2 class="mt-2">Get In Touch</h2>
                         </div>
-                        <p class="mb-4"><ul>
-                  <?php 
-                      $sql2 = "SELECT * FROM courses";
-                      $result2 = mysqli_query($conn, $sql2);
-                      if (mysqli_num_rows($result2)>0){
-                        while($row2 = mysqli_fetch_assoc($result2)) {
-                  ?>
-                    <li><a href="course_details.php?cid=<?php echo $row2['course_id'];?>" class="list-group-item list-group-item-action"><i class="fas fa-angle-right"></i> <?php echo $row2['course_name'];?></a></li>
-                  <?php }} ?>
-                </ul></p>
-                        <div class="row g-3">
-                            <div class="col-sm-6">
-                                <h6 class="mb-3"></h6>
-                                <h6 class="mb-0"></h6>
-                            </div>
-                            <div class="col-sm-6">
-                                <h6 class="mb-3"></h6>
-                                <h6 class="mb-0"></h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center mt-4">
-                           
-                        </div>
+                        <div class="wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="col-md-6 col-lg-3" style="width: 62%;">
+                        <h5 class="text-white mb-4">Get In Touch</h5>
+                        <p><i class="fa fa-map-marker-alt me-3"></i>Canada</p>
+                        <p><i class="fa fa-phone-alt me-3"></i>+1121111111</p>
+                        <p><i class="fa fa-envelope me-3"></i>info@topscorer.com</p>
                     </div>
-                    <div class="col-lg-6">
-                      <h2 class="mt-2">Student Login</h2>
-                        <a class="btn" href="student/login.php" style="margin:5px;padding: 10px; background-color: #216A97;color: whitesmoke;font-weight: bold;border-radius: 10px; width:50%; cursor:pointer; margin-left:122px;">
-                   LOGIN NOW
-                </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- About End -->
-
-
+        <!-- Contact End -->
         
 
-
-      
-        
-
-        
+       
  <?php include('theme/main_footer.php');?>
-
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i class="bi bi-arrow-up"></i></a>
     </div>
