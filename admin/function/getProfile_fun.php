@@ -1,126 +1,3 @@
-<<<<<<< Updated upstream
-<?php 
-   if(isset($_REQUEST['get_student_page']) && $_REQUEST['get_student_page']=="student"){
-      $mID=$_GET['mID'];
-      $mName=$_GET['mName'];
-      $mEmail=$_GET['mEmail'];
-      $mMobile=$_GET['mMobile'];
-      $mPassword=$_GET['mPassword'];
-      $mUsertype=$_GET['mUsertype'];
-      $mStatus=$_GET['mStatus'];
-      $mCreatedate=$_GET['mCreatedate'];
-      $mUpdatedate=$_GET['mUpdatedate'];
-?>
-   <div class="card card-primary card-outline">
-      <h3 class="profile-username text-center"><?php echo $mName;?></h3>
-      <p class="text-muted text-center"><?php echo $mUsertype;?></p>
-      <ul class="list-group list-group-unbordered mb-3">
-          <li class="list-group-item">
-            <b>Email:</b> <a class="float-right"><?php echo $mEmail;?></a>
-        </li>
-        <li class="list-group-item">
-            <b>Mobile:</b> <a class="float-right"><?php echo $mMobile;?></a>
-        </li>
-        <li class="list-group-item">
-            <b>Password:</b> <a class="float-right"><?php echo $mPassword;?></a>
-        </li>
-        <li class="list-group-item">
-            <b>Usertype:</b> <a class="float-right"><?php echo $mUsertype;?></a>
-        </li>
-         <li class="list-group-item">
-            <b>Status:</b> <a class="float-right"><?php echo $mStatus;?></a>
-        </li>
-         <li class="list-group-item">
-            <b>Create date:</b> <a class="float-right"><?php echo $mCreatedate;?></a>
-        </li>
-        <li class="list-group-item">
-            <b>Update date:</b> <a class="float-right"><?php echo $mUpdatedate;?></a>
-        </li>
-      </ul>
-      <div>
-         <?php if($mStatus==1){?>
-           <a class="btn btn-danger btn-sm" href="student_add.php?deactivate=<?php echo $mID;?>" style="margin:5px;" >
-               <i class="fas fa-pencil-alt">
-               </i>
-               Deactive
-           </a>
-         <?php }else if($mStatus==0){?>
-           <a class="btn btn-success btn-sm" href="student_add.php?activate=<?php echo $mID;?>" style="margin:5px;" >
-            <i class="fas fa-pencil-alt">
-            </i>
-               Active
-           </a>
-         <?php }?>
-         <a class="btn btn-info btn-sm" href="student_add.php?editId=<?php echo $mID;?>" style="margin:5px;">
-            <i class="fas fa-pencil-alt">
-            </i>
-             Edit
-         </a>
-         
-      </div>
-   </div>
-<?php 
-   }else if(isset($_REQUEST['get_faculty_page']) && $_REQUEST['get_faculty_page']=="faculty"){
-      $mID=$_GET['mID'];
-      $mName=$_GET['mName'];
-      $mEmail=$_GET['mEmail'];
-      $mMobile=$_GET['mMobile'];
-      $mPassword=$_GET['mPassword'];
-      $mUsertype=$_GET['mUsertype'];
-      $mStatus=$_GET['mStatus'];
-      $mCreatedate=$_GET['mCreatedate'];
-      $mUpdatedate=$_GET['mUpdatedate'];
-?>
-   <div class="card card-primary card-outline">
-      <h3 class="profile-username text-center"><?php echo $mName;?></h3>
-      <p class="text-muted text-center"><?php echo $mUsertype;?></p>
-      <ul class="list-group list-group-unbordered mb-3">
-          <li class="list-group-item">
-            <b>Email:</b> <a class="float-right"><?php echo $mEmail;?></a>
-        </li>
-        <li class="list-group-item">
-            <b>Mobile:</b> <a class="float-right"><?php echo $mMobile;?></a>
-        </li>
-        <li class="list-group-item">
-            <b>Password:</b> <a class="float-right"><?php echo $mPassword;?></a>
-        </li>
-        <li class="list-group-item">
-            <b>Usertype:</b> <a class="float-right"><?php echo $mUsertype;?></a>
-        </li>
-         <li class="list-group-item">
-            <b>Status:</b> <a class="float-right"><?php echo $mStatus;?></a>
-        </li>
-         <li class="list-group-item">
-            <b>Create date:</b> <a class="float-right"><?php echo $mCreatedate;?></a>
-        </li>
-        <li class="list-group-item">
-            <b>Update date:</b> <a class="float-right"><?php echo $mUpdatedate;?></a>
-        </li>
-      </ul>
-      <div>
-         <?php if($mStatus==1){?>
-           <a class="btn btn-danger btn-sm" href="faculty_add.php?editId=<?php echo $row['id'];?>" style="margin:5px;" >
-               <i class="fas fa-pencil-alt">
-               </i>
-               Deactive
-           </a>
-         <?php }else if($mStatus==0){?>
-           <a class="btn btn-info btn-sm" href="faculty_add.php?editId=<?php echo $row['id'];?>" style="margin:5px;" >
-            <i class="fas fa-pencil-alt">
-            </i>
-               Active
-           </a>
-         <?php }?>
-         <a class="btn btn-info btn-sm" href="faculty_add.php?editId=<?php echo $mID;?>" style="margin:5px;">
-            <i class="fas fa-pencil-alt">
-            </i>
-             Edit
-         </a>
-      </div>
-   </div>
-<?php 
-    }
-=======
 <?php 
     include_once 'dbConnection.php';
     session_start();
@@ -474,16 +351,187 @@ if(isset($_REQUEST['get_student_page']) && $_REQUEST['get_student_page']=="stude
     <option disabled value="0" selected style="font-weight: bold;">Select Assignments</option>
 <?php 
         $mSID=$_GET['mSID'];
-        $sqlAssignment = "SELECT a.*,s.*,e.* FROM subject as s,enrollments as e,assignments as a WHERE e.stud_id='".$mSID."' and e.course_id=s.course_id and s.sub_id=a.sub_id";
+        $sqlAssignment = "SELECT a.*,a.id as assignmentsID,s.*,e.* FROM subject as s,enrollments as e,assignments as a,assignments_student as ass WHERE e.stud_id='".$mSID."' and e.course_id=s.course_id and s.sub_id=a.sub_id and ass.assignments_id=a.id";
         $resultAssignment = mysqli_query($conn, $sqlAssignment);
         if (mysqli_num_rows($resultAssignment)>0){
           while($rowAssignment = mysqli_fetch_assoc($resultAssignment)) {
+                $assID=$rowAssignment['assignmentsID'];
+        $sqlAssignment1 = "SELECT * FROM grades WHERE assignment_id='".$assID."'";
+        $resultAssignment1 = mysqli_query($conn, $sqlAssignment1);
+        if (mysqli_num_rows($resultAssignment1)>0){}else{
 ?> 
-    <option value="<?php echo $rowAssignment['id'];?>"><?php echo $rowAssignment['assignment_name'];?></option> 
+    <option value="<?php echo $rowAssignment['assignmentsID'];?>"><?php echo $rowAssignment['assignment_name'];?></option> 
+<?php 
+    }}}
+?>
+<?php 
+   }else if(isset($_REQUEST['get_std_course_data_page']) && $_REQUEST['get_std_course_data_page']=="get_std_course_data"){
+?>
+    <option disabled value="0" selected style="font-weight: bold;">Select Course</option>
+<?php 
+        $mSID=$_GET['mSID'];
+        $mEID=$_GET['mEID'];
+        $sqlSubject = "SELECT c.* FROM courses as c,enrollments as e WHERE e.course_id=c.course_id and e.stud_id='".$mSID."'";
+        $resultSubject = mysqli_query($conn, $sqlSubject);
+        if (mysqli_num_rows($resultSubject)>0){
+          while($rowSubject = mysqli_fetch_assoc($resultSubject)) {
+?> 
+    <option value="<?php echo $rowSubject['course_id'];?>" data-eid="<?php echo $mEID;?>" data-sid="<?php echo $mSID;?>"><?php echo $rowSubject['course_name'];?></option> 
 <?php 
     }}
 ?>
 <?php 
+   }else if(isset($_REQUEST['get_grade_details_data_page']) && $_REQUEST['get_grade_details_data_page']=="get_grade_details_data"){
+        $mCID=$_GET['mCID'];
+        $mEID=$_GET['mEID'];
+        $mSID=$_GET['mSID'];
+?> 
+    <div class="row">
+      <div class="col-md-12">
+        <?php 
+          if($conn) {
+            $sql1 = "SELECT c.*,a.*,e.*,s.* FROM assignments as a, enrollments as e,subject as s,courses as c WHERE e.course_id=c.course_id and e.course_id=s.course_id and s.sub_id=a.sub_id and e.stud_id='".$mSID."' GROUP BY c.course_id ORDER BY a.id DESC";
+            $result1 = mysqli_query($conn, $sql1);
+            $inumber=0;
+            if (mysqli_num_rows($result1)>0){
+        ?>
+        <div class="card card-info">
+          <div class="card-header">
+          </div>
+          <div class="card-body">
+            <table class="table table-striped projects text-center">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Subject Name</th>
+                  <th scope="col">Assignments Name</th>
+                  <th scope="col">Due Date</th>
+                  <th scope="col">Grade</th>
+                </tr>
+              </thead>
+              <tbody >
+                <?php 
+                  while($row = mysqli_fetch_assoc($result1)) {
+                    $today = date("Y-m-d");
+                    $courseId=$row['course_id'];
+                    $GrandAvg=0;
+                        $sqlSub = "SELECT * FROM subject WHERE course_id='".$courseId."'";
+                        $resultSub = mysqli_query($conn, $sqlSub);
+                        if (mysqli_num_rows($resultSub)>0){
+                            while($rowSemSub = mysqli_fetch_assoc($resultSub)) {
+                                $inumber++;
+                                $subId=$rowSemSub['sub_id'];
+                ?>
+                    <tr style="border: hidden;">
+                      <td scope="row"><?php echo  $inumber;?></td>
+                      <td scope="row"><?php echo $rowSemSub['sub_name'];?></td>
+                        <?php 
+                          $totalAvg=0;
+                          $sqlAssi = "SELECT * FROM assignments WHERE sub_id='".$subId."'";
+                          $resultAssi = mysqli_query($conn, $sqlAssi);
+                          if (mysqli_num_rows($resultAssi)>0){
+                            while($rowAssi = mysqli_fetch_assoc($resultAssi)) {
+                              $assignmentId=$rowAssi['id'];
+                        ?>
+                        <tr >
+                          <td></td>
+                          <td></td>
+                          <td scope="row"><?php echo $rowAssi['assignment_name'];?></td>
+                          <td>
+                            <?php echo $dueDate=$rowAssi['due_date'];?>
+                          </td>
+                          <td class="project-actions text-center">
+                            <?php 
+                                $sql002 = "SELECT g.grade FROM grades as g WHERE g.assignment_id='".$assignmentId."'";
+                                $result002 = mysqli_query($conn, $sql002);
+                                if (mysqli_num_rows($result002)>0){
+                                  while($row002 = mysqli_fetch_assoc($result002)) {
+                                    $totalAvg=$totalAvg+$row002['grade'];
+                                    $GrandAvg=$GrandAvg+$row002['grade'];
+                                    echo $row002['grade'];
+                                  }
+                                }else{
+                                  echo '--';
+                                }
+                            ?>
+                          </td>
+                        </tr>
+                        <?php } } ?>
+                    </tr>
+                    <tr scope="row">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>Subject Total Grade:</td>
+                      <td><?php echo $totalAvg;?></td>
+                    </tr>
+                    <?php } } ?>
+                    <tr scope="row">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>Grant Total Grade:</td>
+                      <td><?php echo $GrandAvg;?></td>
+                    </tr>
+                <?php } ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <?php } } ?>
+      </div>
+    </div>
+<?php 
+   }else if(isset($_REQUEST['get_attend_details_data_page']) && $_REQUEST['get_attend_details_data_page']=="get_attend_details_data"){
+        $mCID=$_GET['mCID'];
+        $mEID=$_GET['mEID'];
+?> 
+<div class="row" >
+  <div class="col-md-12" >
+    <?php 
+        $sql1 = "SELECT c.*,a.* FROM attendance as a,courses as c WHERE a.enrollment_id='".$mEID."' and a.course_id='".$mCID."' and a.course_id=c.course_id  ORDER BY a.attendance_date DESC";
+        $result1 = mysqli_query($conn, $sql1);
+        $inumber=0;
+        if (mysqli_num_rows($result1)>0){
+    ?>
+    <div class="card card-info">
+      <div class="card-header">
+      </div>
+      <div class="card-body">
+        <table class="table table-striped projects text-center">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Course Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Attendance</th>
+            </tr>
+          </thead>
+          <tbody >
+            <?php 
+                while($row = mysqli_fetch_assoc($result1)) {
+                  $inumber++;
+            ?>
+            <tr>
+                <td scope="row"><?php echo  $inumber;?></td>
+                <td scope="row"><?php echo $row['course_name'];?></td>
+                <td scope="row"><?php echo $row['attendance_date'];?></td>
+                <td scope="row">
+                    <?php if($row['status']=="present"){?>
+                        <div style="background-color: greenyellow; font-weight: bold; color: darkgreen;">Present</div>
+                    <?php }else if($row['status']=="absent"){?>
+                        <div style="background-color: orangered; font-weight: bold; color: white;">Absent</div>
+                    <?php }?>
+                </td>
+            </tr>
+        <?php } ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <?php } ?>
+  </div>
+</div> 
+<?php 
     }
->>>>>>> Stashed changes
 ?>

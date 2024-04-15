@@ -97,7 +97,7 @@
                             <?php 
                               if($totalAvg>=55){
                             ?>
-                            <a target="__blank" href="printDiv.php?eid=<?php echo $row01['enrollId']; ?>&courseId=<?php echo $row01['course_id']; ?>" class="btn btn-default"><i class="fa fa-print"></i></a>
+                            <a target="__blank" href="payment.php?eid=<?php echo $row01['enrollId']; ?>&courseId=<?php echo $row01['course_id']; ?>" class="btn btn-default"><i class="fa fa-print"></i></a>
                             <?php } }}?>
                           </td>
                         </tr>

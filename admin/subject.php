@@ -59,7 +59,7 @@
                         <select id="inputCourse" name="inputCourse" class="form-control">
                           <option disabled value="0" selected style="font-weight: bold;">Select Course</option>
                           <?php 
-                            $sql2 = "SELECT * FROM courses WHERE status='".$status."'";
+                            $sql2 = "SELECT c.* FROM courses as c,subject as s WHERE c.status='".$status."' and s.course_id!=c.course_id GROUP BY c.course_id";
                             $result2 = mysqli_query($conn, $sql2);
                             if (mysqli_num_rows($result2)>0){
                               while($row2 = mysqli_fetch_assoc($result2)) {
@@ -105,7 +105,7 @@
                             <option disabled value="0" selected style="font-weight: bold;">Select Faculty</option>
                            <?php 
                               $UserType="faculty";
-                              $sqlUser = "SELECT * FROM users WHERE user_type='".$UserType."' and status='".$status."'";
+                              $sqlUser = "SELECT * FROM users as u,subject as s WHERE u.user_type='".$UserType."' and u.status='".$status."' and s.faculty_id!=u.id GROUP BY u.id";
                               $resultUser = mysqli_query($conn, $sqlUser);
                               if (mysqli_num_rows($resultUser)>0){
                                 while($rowUser = mysqli_fetch_assoc($resultUser)) {
@@ -119,7 +119,7 @@
                           <select id="inputCourse" name="inputCourse" class="form-control">
                             <option disabled value="0" selected style="font-weight: bold;">Select Course</option>
                             <?php 
-                              $sql2 = "SELECT * FROM courses WHERE status='".$status."'";
+                              $sql2 = "SELECT c.* FROM courses as c,subject as s WHERE c.status='".$status."' and s.course_id!=c.course_id GROUP BY c.course_id";
                               $result2 = mysqli_query($conn, $sql2);
                               if (mysqli_num_rows($result2)>0){
                                 while($row2 = mysqli_fetch_assoc($result2)) {

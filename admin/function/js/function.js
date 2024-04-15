@@ -1,75 +1,3 @@
-<<<<<<< Updated upstream
-$(document).ready(function() {
-	$("#studentForm").on('submit', function(e){
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: 'function/submit_fun.php',
-            data: new FormData(this),
-            dataType: 'json',
-            contentType: false,
-            cache: false,
-            processData:false,
-            beforeSend: function(){
-                $('.submitBtn').attr("disabled","disabled");
-                $('#studentForm').css("opacity",".5");
-            },
-            success: function(response){ 
-                $('.statusMsg').html('');
-                if(response.status == 1){
-                    $('#studentForm')[0].reset();
-                    alert(response.message);
-                    window.location = 'student_add.php';
-                }else if(response.status == 0){
-                    $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
-                }
-                $('#studentForm').css("opacity","");
-                $(".submitBtn").removeAttr("disabled");
-            },error: function(exception){
-                $('.statusMsg').html(exception.message);
-                $('#studentForm').css("opacity","");
-                $(".submitBtn").removeAttr("disabled");
-            }
-        });
-    });
-    $("#studentRegForm").on('submit', function(e){
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: '../admin/function/submit_fun.php',
-            data: new FormData(this),
-            dataType: 'json',
-            contentType: false,
-            cache: false,
-            processData:false,
-            beforeSend: function(){
-                $('.submitBtn').attr("disabled","disabled");
-                $('#studentRegForm').css("opacity",".5");
-            },
-            success: function(response){ 
-                $('.statusMsg').html('');
-                if(response.status == 1){
-                    $('#studentRegForm')[0].reset();
-                    alert(response.message);
-                    window.location = 'index.php';
-                }else if(response.status == 0){
-                    $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
-                    alert(response.message);
-                }
-                $('#studentRegForm').css("opacity","");
-                $(".submitBtn").removeAttr("disabled");
-            },error: function(exception){
-                $('.statusMsg').html(exception.message);
-                $('#studentRegForm').css("opacity","");
-                $(".submitBtn").removeAttr("disabled");
-                alert(exception.message);
-            }
-        });
-    });
-});
-
-    
-=======
 $(document).ready(function() {
     $("#loginForm").on('submit', function(e){
         e.preventDefault();
@@ -309,7 +237,7 @@ $(document).ready(function() {
             }
         });
     });
-    $("#assignmentsSubmitForm").on('submit', function(e){
+    $(".assignmentsSubmitForm").on('submit', function(e){
         e.preventDefault();
         $.ajax({
             type: 'POST',
@@ -321,24 +249,24 @@ $(document).ready(function() {
             processData:false,
             beforeSend: function(){
                 $('.submitBtn').attr("disabled","disabled");
-                $('#assignmentsSubmitForm').css("opacity",".5");
+                $('.assignmentsSubmitForm').css("opacity",".5");
                 $('.statusMsg').html('');
             },
             success: function(response){ 
                 alert(response.message);
                 if(response.status == 1){
-                    $('#assignmentsSubmitForm')[0].reset();
+                    $('.assignmentsSubmitForm')[0].reset();
                     $('.statusMsg').html(response.message);
                     window.location = "assignments.php";
                 }else if(response.status == 0){
                     $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
                     $('.statusMsg').html(response.message);
                 }
-                $('#assignmentsSubmitForm').css("opacity","");
+                $('.assignmentsSubmitForm').css("opacity","");
                 $(".submitBtn").removeAttr("disabled");
             },error: function(exception){
                 $('.statusMsg').html(exception.message);
-                $('#assignmentsSubmitForm').css("opacity","");
+                $('.assignmentsSubmitForm').css("opacity","");
                 $(".submitBtn").removeAttr("disabled");
                 alert(exception.message);
             }
@@ -379,7 +307,76 @@ $(document).ready(function() {
             }
         });
     });
+    $("#gradeForm").on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '../admin/function/submit_fun.php',
+            data: new FormData(this),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#gradeForm').css("opacity",".5");
+                $('.statusMsg').html('');
+            },
+            success: function(response){ 
+                alert(response.message);
+                if(response.status == 1){
+                    $('#gradeForm')[0].reset();
+                    $('.statusMsg').html(response.message);
+                    window.location = "grades.php";
+                }else if(response.status == 0){
+                    $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
+                    $('.statusMsg').html(response.message);
+                }
+                $('#gradeForm').css("opacity","");
+                $(".submitBtn").removeAttr("disabled");
+            },error: function(exception){
+                $('.statusMsg').html(exception.message);
+                $('#gradeForm').css("opacity","");
+                $(".submitBtn").removeAttr("disabled");
+                alert(exception.message);
+            }
+        });
+    });
+    $("#attendanceForm").on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '../admin/function/submit_fun.php',
+            data: new FormData(this),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#attendanceForm').css("opacity",".5");
+                $('.statusMsg').html('');
+            },
+            success: function(response){ 
+                alert(response.message);
+                if(response.status == 1){
+                    $('#attendanceForm')[0].reset();
+                    $('.statusMsg').html(response.message);
+                    window.location = "attendance.php";
+                }else if(response.status == 0){
+                    $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
+                    $('.statusMsg').html(response.message);
+                }
+                $('#attendanceForm').css("opacity","");
+                $(".submitBtn").removeAttr("disabled");
+            },error: function(exception){
+                $('.statusMsg').html(exception.message);
+                $('#attendanceForm').css("opacity","");
+                $(".submitBtn").removeAttr("disabled");
+                alert(exception.message);
+            }
+        });
+    });
 });
 
     
->>>>>>> Stashed changes
